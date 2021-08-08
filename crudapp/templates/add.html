@@ -1,0 +1,29 @@
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static '/add.css' %}"/>
+    </head>
+    <body>
+        <h1>Add Data</h1>
+        <div class="bl">
+
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Add Data"/>
+        </form>
+    </div>
+
+        <div class="o1">
+            {% if obj %}
+            {% for i in obj %}
+
+            <h1>Name:{{i.ename}} <a class="primary" href="{% url 'editing' i.id %}">Edit</a>|<a class="danger" href="{% url 'deleting' i.id %}">Delete</a></h1>
+            {% endfor %}
+            
+            {% endif %}
+           
+        </div>
+    </body>
+</html>
